@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technolab Vraagbaak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#">
+    <div class="logo-icon">TL</div>
+    <span class="logo-text">Techno<span>lab</span></span>
+  </a>
+  <span class="header-badge">🤖 Vraagbaak</span>
+</header>
+
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- Upload -->
+    <div class="card">
+      <div class="card-title">📄 Documenten</div>
+      <div class="upload-zone" id="uploadZone">
+        <input type="file" id="fileInput" accept=".pdf" multiple />
+        <span class="upload-icon">⬆️</span>
+        <p>Sleep PDF's hierheen</p>
+        <small>of klik om te bladeren</small>
+      </div>
+      <div class="upload-progress" id="uploadProgress">
+        <div style="font-size:12px;font-weight:700;color:var(--text-muted);margin-bottom:4px" id="uploadLabel">Verwerken...</div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+      <div id="processingBanner">
+        <div class="spinner"></div>
+        <span id="processingText">Document verwerken...</span>
+      </div>
+    </div>
+
+    <!-- Doc list -->
+    <div class="card">
+      <div class="card-title">📚 Kennisbank</div>
+      <div class="doc-list" id="docList">
+        <div class="empty-docs">Nog geen documenten<br>geüpload</div>
+      </div>
+    </div>
+
+    <!-- Quick questions -->
+    <div class="card">
+      <div class="card-title">⚡ Snelle vragen</div>
+      <div class="quick-list">
+        <button class="quick-btn" onclick="sendQuick(this)">Hoe laat is de dagafsluiting?</button>
+        <button class="quick-btn" onclick="sendQuick(this)">Hoe kan ik printen?</button>
+        <button class="quick-btn" onclick="sendQuick(this)">Waar staan de lesplannen?</button>
+        <button class="quick-btn" onclick="sendQuick(this)">Hoe zet ik koffie?</button>
+        <button class="quick-btn" onclick="sendQuick(this)">Wat zijn de openingstijden?</button>
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div class="card" style="padding:14px 20px">
+      <div class="status-pill">
+        <div class="status-dot"></div>
+        <span>Chatbot actief</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- CHAT -->
+  <main class="chat-area">
+    <div class="chat-header">
+      <div class="bot-avatar">🤖</div>
+      <div class="chat-header-info">
+        <h2>Technolab Vraagbaak</h2>
+        <p>Stel een vraag over hoe dingen werken bij Technolab</p>
+      </div>
+    </div>
+
+    <div class="messages" id="messages">
+      <div class="welcome-msg">
+        <span class="welcome-icon">👋</span>
+        <h3>Hallo! Ik ben de Technolab Vraagbaak</h3>
+        <p>Upload een of meerdere PDF-documenten en stel me daarna al je vragen. Ik zoek de antwoorden op in de documenten!</p>
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <div class="input-wrapper">
+        <textarea id="userInput" rows="1" placeholder="Stel een vraag... (bijv. 'Hoe kan ik printen?')" maxlength="500"></textarea>
+      </div>
+      <button id="sendBtn" onclick="sendMessage()" title="Verstuur">
+        ➤
+      </button>
+    </div>
+  </main>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
